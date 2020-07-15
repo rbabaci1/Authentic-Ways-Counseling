@@ -6,7 +6,7 @@ import "./navBar.scss";
 import logoImg from "../../images/logo.svg";
 
 export default function NavBar() {
-  const [navBarStyle, setNavBarStyle] = useState(null);
+  const [navBarStyle, setNavBarStyle] = useState({});
 
   useScrollPosition(
     props => {
@@ -17,15 +17,13 @@ export default function NavBar() {
         transition: `all 200ms ${isVisible && "ease-in"}`,
       };
 
-      if (JSON.stringify(shouldBeStyle) === JSON.stringify(navBarStyle)) return;
-
       setNavBarStyle(shouldBeStyle);
     },
     [navBarStyle]
   );
 
   return (
-    <div className="navBar" style={{ ...navBarStyle }}>
+    <div className="navBar" style={navBarStyle}>
       <div className="logo">
         <img src={logoImg} alt="logo" />
 
