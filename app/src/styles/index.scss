@@ -19,3 +19,12 @@ code {
     color: #7cd0c3;
   }
 }
+.about,
+.help,
+.resources,
+.contact {
+  max-width: 1200px;
+  margin: auto;
+  padding: 150px 0;
+  line-height: 25px;
+}
