@@ -6,6 +6,17 @@ import "./navBar.scss";
 export default function NavBar() {
   return (
     <div className="navBar">
+      <div className="logo">
+        <img
+          src="https://cdn.pixabay.com/photo/2020/06/23/21/38/purple-5333959__480.jpg"
+          alt="logo"
+        />
+        <div className="business-name">
+          <h1>NANCY OLIVIER</h1>
+          <h4>AUTHENTIC WAYS COUNSELING</h4>
+        </div>
+      </div>
+
       <div className="desktop">
         <button
           onClick={() =>
