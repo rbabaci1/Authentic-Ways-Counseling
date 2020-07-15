@@ -1,19 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, animateScroll as scroll } from "react-scroll";
+import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 
 import "./navBar.scss";
+import logoImg from "../../images/logo.svg";
 
 export default function NavBar() {
+  const [navBarStyle, setNavBarStyle] = useState(null);
+
+  useScrollPosition(
+    ({ prevPos, currPos }) => {
+      const isVisible = currPos.y < -10;
+
+      const shouldBeStyle = {
+        backgroundColor: `${isVisible ? "#fcf6ec" : "white"}`,
+        transition: `all 200ms ${isVisible && "ease-in"}`,
+      };
+
+      if (JSON.stringify(shouldBeStyle) === JSON.stringify(navBarStyle)) return;
+
+      setNavBarStyle(shouldBeStyle);
+    },
+    [navBarStyle]
+  );
+
   return (
-    <div className="navBar">
+    <div className="navBar" style={{ ...navBarStyle }}>
       <div className="logo">
-        <img
-          src="https://cdn.pixabay.com/photo/2020/06/23/21/38/purple-5333959__480.jpg"
-          alt="logo"
-        />
+        <img src={logoImg} alt="logo" />
+
         <div className="business-name">
           <h1>NANCY OLIVIER</h1>
-          <h4>AUTHENTIC WAYS COUNSELING</h4>
+          <p>AUTHENTIC WAYS COUNSELING</p>
         </div>
       </div>
 
