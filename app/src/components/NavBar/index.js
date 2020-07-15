@@ -9,8 +9,8 @@ export default function NavBar() {
   const [navBarStyle, setNavBarStyle] = useState(null);
 
   useScrollPosition(
-    ({ prevPos, currPos }) => {
-      const isVisible = currPos.y < -10;
+    props => {
+      const isVisible = props.currPos.y < -10;
 
       const shouldBeStyle = {
         backgroundColor: `${isVisible ? "#fcf6ec" : "white"}`,
